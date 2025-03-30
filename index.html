@@ -4,9 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>hand-gesture-recognition + AR</title>
-  <script type="module" src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <!-- Load TensorFlow.js first -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0"></script>
+  <!-- Load TensorFlow.js backend -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl@3.11.0"></script>
+  <!-- Load Handpose model -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.1.0"></script>
+  <!-- Load MindAR -->
+  <script src="./mindar/mindar-image-three.prod.js"></script>
+  <!-- Load our main script -->
+  <script type="module" src="./src/main.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #loading-indicator {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 5px;
+    }
+    #tracking-status {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
-  
+  <div id="loading-indicator">
+    Loading AR experience...
+  </div>
+  <div id="tracking-status">
+    Point your camera at the target image
+  </div>
 </body>
 </html>
